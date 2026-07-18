@@ -1,9 +1,9 @@
 function App() {
   return (
-    <div>
+    <main>
       <h1>🛒 Sanjay Kirana Store</h1>
-      <p>Welcome to our online grocery store.</p>
-    </div>
+      <p>Harraiya, Basti</p>
+    </main>
   );
 }
 
