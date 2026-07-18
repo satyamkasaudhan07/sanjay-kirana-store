@@ -1,9 +1,15 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <main>
-      <h1>🛒 Sanjay Kirana Store</h1>
-      <p>Harraiya, Basti</p>
-    </main>
+    <>
+      <Navbar />
+
+      <main>
+        <h1>Welcome to Sanjay Kirana Store</h1>
+        <p>Harraiya, Basti</p>
+      </main>
+    </>
   );
 }
 

@@ -1,23 +1,19 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.navbar {
+  background: #2e7d32;
+  color: white;
+  padding: 18px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f7f7f7;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-main {
-  padding: 40px;
-}
-
-h1 {
-  color: #2e7d32;
-}
-
-p {
-  margin-top: 10px;
-  color: #555;
+.nav-links li {
+  cursor: pointer;
 }
