@@ -1,19 +1,28 @@
-.navbar {
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  color: #2e7d32;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+.hero button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
   background: #2e7d32;
   color: white;
-  padding: 18px 40px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links li {
+  font-size: 1rem;
   cursor: pointer;
+}
+
+.hero button:hover {
+  background: #256428;
 }
