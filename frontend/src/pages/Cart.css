@@ -1,0 +1,433 @@
+.cart-page {
+    min-height: 100vh;
+    background: #f8f9f8;
+    padding: 40px 5% 70px;
+}
+
+.cart-page h1 {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    color: #222;
+    font-size: 2rem;
+}
+
+
+/* =========================
+   CART LAYOUT
+========================= */
+
+.cart-layout {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 30px;
+
+    align-items: start;
+}
+
+
+/* =========================
+   CART ITEMS
+========================= */
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    background: white;
+
+    border-radius: 16px;
+    padding: 20px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+
+    transition: 0.25s ease;
+}
+
+.cart-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.cart-image-container {
+    width: 130px;
+    height: 130px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fafafa;
+    border-radius: 12px;
+}
+
+.cart-image-container img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
+.cart-details {
+    flex: 1;
+}
+
+.cart-details h3 {
+    margin: 0 0 6px;
+
+    font-size: 1.15rem;
+    color: #222;
+}
+
+.cart-size {
+    margin: 0 0 8px;
+
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.cart-price {
+    margin: 0;
+
+    color: #2e7d32;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+
+/* =========================
+   QUANTITY + SUBTOTAL
+========================= */
+
+.cart-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 14px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: #2e7d32;
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+
+.quantity button {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: white;
+    color: #2e7d32;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.quantity button:hover {
+    transform: scale(1.08);
+}
+
+.quantity span {
+    min-width: 25px;
+
+    text-align: center;
+
+    color: white;
+    font-weight: 700;
+}
+
+.cart-bottom strong {
+    font-size: 1.1rem;
+    color: #222;
+}
+
+
+/* =========================
+   REMOVE
+========================= */
+
+.remove-btn {
+    margin-top: 12px;
+
+    background: transparent;
+    color: #e53935;
+
+    border: none;
+
+    padding: 4px 0;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    color: #b71c1c;
+}
+
+
+/* =========================
+   CART SUMMARY
+========================= */
+
+.cart-summary {
+    position: sticky;
+    top: 20px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+}
+
+.cart-summary h2 {
+    margin: 0 0 25px;
+
+    color: #222;
+    font-size: 1.3rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+
+    color: #555;
+}
+
+.summary-row span:last-child {
+    font-weight: 600;
+    color: #333;
+}
+
+.free-delivery-message {
+    margin: 18px 0;
+
+    padding: 12px;
+
+    background: #e8f5e9;
+    color: #2e7d32;
+
+    border-radius: 10px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+.summary-divider {
+    height: 1px;
+    background: #e5e5e5;
+
+    margin: 22px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.2rem;
+}
+
+.summary-total strong {
+    color: #2e7d32;
+    font-size: 1.5rem;
+}
+
+
+/* =========================
+   CHECKOUT BUTTON
+========================= */
+
+.checkout-btn {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #2e7d32;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.checkout-btn:hover {
+    background: #1b5e20;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   EMPTY CART
+========================= */
+
+.empty-cart {
+    max-width: 600px;
+
+    margin: 80px auto;
+
+    padding: 50px 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.empty-cart-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.empty-cart h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.empty-cart p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.continue-shopping {
+    border: none;
+
+    padding: 13px 25px;
+
+    background: #2e7d32;
+    color: white;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.continue-shopping:hover {
+    background: #1b5e20;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-summary {
+        position: static;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .cart-page {
+        padding: 25px 15px 50px;
+    }
+
+    .cart-page h1 {
+        font-size: 1.6rem;
+    }
+
+    .cart-item {
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .cart-image-container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .cart-image-container img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .cart-details h3 {
+        font-size: 1rem;
+    }
+
+    .cart-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cart-bottom strong {
+        font-size: 1rem;
+    }
+
+    .cart-summary {
+        padding: 20px;
+    }
+}
+
+.quantity button:disabled {
+    background: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+}

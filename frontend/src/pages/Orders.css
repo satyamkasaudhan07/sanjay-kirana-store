@@ -1,0 +1,225 @@
+.orders-page {
+    min-height: 100vh;
+
+    background: #f8f9f8;
+
+    padding: 40px 5% 70px;
+}
+
+.orders-page h1 {
+    max-width: 1100px;
+
+    margin: 0 auto 30px;
+
+    color: #2e7d32;
+
+    font-size: 2rem;
+}
+
+.orders-list {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.order-card {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+}
+
+.order-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.order-header div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.order-header span {
+    color: #888;
+
+    font-size: 0.8rem;
+}
+
+.order-header strong {
+    color: #333;
+
+    font-size: 0.9rem;
+}
+
+.order-status {
+    margin-left: auto;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #e8f5e9;
+
+    color: #2e7d32 !important;
+
+    font-weight: 700;
+}
+
+.order-products {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 20px 0;
+}
+
+.order-product {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.order-product img {
+    width: 70px;
+    height: 70px;
+
+    object-fit: contain;
+
+    background: #fafafa;
+
+    border-radius: 10px;
+}
+
+.order-product div {
+    flex: 1;
+}
+
+.order-product h3 {
+    margin: 0 0 5px;
+
+    color: #333;
+
+    font-size: 1rem;
+}
+
+.order-product p {
+    margin: 0;
+
+    color: #888;
+
+    font-size: 0.85rem;
+}
+
+.order-product > strong {
+    color: #2e7d32;
+}
+
+.order-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #eee;
+
+    color: #777;
+}
+
+.order-footer strong {
+    color: #2e7d32;
+
+    font-size: 1.15rem;
+}
+
+.no-orders {
+    max-width: 600px;
+
+    margin: 80px auto;
+
+    padding: 50px 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.no-orders-icon {
+    font-size: 4rem;
+
+    margin-bottom: 15px;
+}
+
+.no-orders h2 {
+    color: #333;
+}
+
+.no-orders p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+.shop-orders-btn {
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    background: #2e7d32;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+
+    .orders-page {
+        padding: 25px 15px 50px;
+    }
+
+    .order-header {
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .order-status {
+        margin-left: 0;
+    }
+
+    .order-product > strong {
+        font-size: 0.9rem;
+    }
+}

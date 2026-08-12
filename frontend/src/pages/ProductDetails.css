@@ -1,0 +1,299 @@
+.product-details-page {
+    min-height: 100vh;
+    background: #f8f9f8;
+    padding: 30px 5% 70px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 25px;
+
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.product-details {
+    max-width: 1200px;
+    margin: auto;
+
+    background: white;
+    border-radius: 24px;
+
+    padding: 40px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.details-image-section {
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fafafa;
+    border-radius: 20px;
+}
+
+.details-image {
+    width: 85%;
+    height: 450px;
+    object-fit: contain;
+}
+
+.details-wishlist {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+
+    color: #777;
+
+    transition: 0.25s;
+}
+
+.details-wishlist:hover {
+    transform: scale(1.08);
+}
+
+.details-wishlist.wishlisted {
+    color: #e53935;
+}
+
+.details-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details-brand {
+    color: #2e7d32;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.details-info h1 {
+    font-size: 2.4rem;
+    color: #222;
+    margin: 0 0 12px;
+}
+
+.details-size {
+    color: #777;
+    font-size: 1rem;
+}
+
+.details-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.details-rating span:first-child {
+    background: #fff3cd;
+    padding: 7px 12px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-weight: 700;
+}
+
+.details-rating svg {
+    color: #ffb400;
+}
+
+.details-rating span:last-child {
+    color: #888;
+}
+
+.details-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.details-current-price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2e7d32;
+}
+
+.details-old-price {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.details-discount {
+    background: #e8f5e9;
+    color: #2e7d32;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.details-divider {
+    height: 1px;
+    background: #eee;
+    margin: 28px 0;
+}
+
+.details-info h3 {
+    margin-bottom: 10px;
+}
+
+.details-description {
+    color: #666;
+    line-height: 1.7;
+}
+
+.details-stock {
+    margin-top: 20px;
+    color: #2e7d32;
+    font-weight: 700;
+}
+
+.details-add-btn {
+    margin-top: 25px;
+
+    width: 100%;
+    padding: 16px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #2e7d32;
+    color: white;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    transition: 0.25s;
+}
+
+.details-add-btn:hover {
+    background: #1b5e20;
+}
+
+.details-quantity {
+    margin-top: 25px;
+
+    width: 100%;
+    height: 52px;
+
+    background: #2e7d32;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 12px;
+}
+
+.details-quantity button {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: white;
+    color: #2e7d32;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.details-quantity span {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.product-not-found {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.product-not-found a {
+    color: #2e7d32;
+}
+
+@media (max-width: 768px) {
+
+    .product-details-page {
+        padding: 20px 15px 50px;
+    }
+
+    .product-details {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .details-image-section {
+        min-height: 350px;
+    }
+
+    .details-image {
+        height: 320px;
+    }
+
+    .details-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .details-current-price {
+        font-size: 1.6rem;
+    }
+}
+
+.details-quantity button:disabled {
+    background: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+}

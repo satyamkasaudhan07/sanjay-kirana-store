@@ -1,0 +1,28 @@
+.featured-products {
+    padding: 60px 8%;
+}
+
+.featured-products h2 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.no-products {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.no-products h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}

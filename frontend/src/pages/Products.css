@@ -1,0 +1,251 @@
+.products-page {
+    min-height: 100vh;
+    background: #f8f9f8;
+    padding: 40px 5% 70px;
+}
+
+.products-page-header {
+    max-width: 1200px;
+    margin: 0 auto 25px;
+    text-align: center;
+}
+
+.products-page-header h1 {
+    margin: 0 0 8px;
+    color: #2e7d32;
+    font-size: 2.2rem;
+}
+
+.products-page-header p {
+    margin: 0;
+    color: #777;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.products-search {
+    position: relative;
+
+    max-width: 700px;
+    margin: 0 auto 15px;
+}
+
+.products-search input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 15px 50px 15px 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 30px;
+
+    background: white;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.products-search input:focus {
+    border-color: #2e7d32;
+}
+
+.products-search button {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eee;
+
+    color: #555;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   RESULT HEADER
+========================= */
+
+.products-result-header {
+    max-width: 1200px;
+
+    margin: 20px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.products-result-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.4rem;
+}
+
+.products-result-header span {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.all-products-grid {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.products-empty {
+    max-width: 600px;
+
+    margin: 70px auto;
+
+    padding: 50px 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.products-empty > div {
+    font-size: 3rem;
+}
+
+.products-empty h2 {
+    margin: 15px 0 8px;
+    color: #333;
+}
+
+.products-empty p {
+    color: #777;
+}
+
+.products-empty button {
+    margin-top: 15px;
+
+    padding: 11px 22px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #2e7d32;
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+    .all-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 750px) {
+    .all-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .products-page {
+        padding: 30px 15px 50px;
+    }
+
+    .products-page-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .all-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .products-result-header {
+        align-items: flex-start;
+    }
+}
+.products-toolbar {
+    max-width: 1200px;
+    margin: 20px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.products-toolbar .products-result-header {
+    margin: 0;
+    flex: 1;
+}
+
+.sort-select {
+    padding: 10px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    background: white;
+    color: #444;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.sort-select:focus {
+    border-color: #2e7d32;
+}
+
+@media (max-width: 600px) {
+    .products-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .sort-select {
+        width: 100%;
+    }
+}
