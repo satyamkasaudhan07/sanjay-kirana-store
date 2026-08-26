@@ -1,17 +1,3 @@
-import comfort from "../assets/products/home-care/comfort.png";
-import dettol from "../assets/products/home-care/dettol.png";
-import dettolhandwash from "../assets/products/home-care/dettol-handwash.png";
-import dettolAntisepticLiquid from "../assets/products/home-care/dettolAntisepticLiquid.png";
-import dettolCool from "../assets/products/home-care/dettolcool.png";
-import harpic from "../assets/products/home-care/harpic.png";
-import lifebuoy from "../assets/products/home-care/lifebuoy.png";
-import lizol from "../assets/products/home-care/lizol.png";
-import surfExcel from "../assets/products/home-care/surfexcel.png";
-import tide from "../assets/products/home-care/tide.png";
-import vimBar from "../assets/products/home-care/vimbar.png";
-import vimLiquid from "../assets/products/home-care/vimliquid.png";
-import wheel from "../assets/products/home-care/wheel.png";
-
 const homeCare = [
   {
     id: 101,
@@ -37,7 +23,7 @@ const homeCare = [
     rating: 4.6,
     totalReviews: 140,
 
-    image: dettol,
+    image: "/products/home-care/dettol.png",
   },
   {
     id: 102,
@@ -63,7 +49,7 @@ const homeCare = [
     rating: 4.8,
     totalReviews: 90,
 
-    image: dettolAntisepticLiquid,
+    image: "/products/home-care/dettolAntisepticLiquid.png",
   },
   {
     id: 103,
@@ -89,7 +75,7 @@ const homeCare = [
     rating: 4.5,
     totalReviews: 100,
 
-    image: dettolCool,
+    image: "/products/home-care/dettolcool.png",
   },
   {
     id: 104,
@@ -109,7 +95,7 @@ const homeCare = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 120,
-    image: dettolhandwash,
+    image: "/products/home-care/dettol-handwash.png",
   },
   {
     id: 113,
@@ -135,7 +121,7 @@ const homeCare = [
     rating: 4.8,
     totalReviews: 220,
 
-    image: harpic,
+    image: "/products/home-care/harpic.png",
   },
   {
     id: 105,
@@ -161,7 +147,7 @@ const homeCare = [
     rating: 4.5,
     totalReviews: 170,
 
-    image: lifebuoy,
+    image: "/products/home-care/lifebuoy.png",
   },
   {
     id: 106,
@@ -187,7 +173,7 @@ const homeCare = [
     rating: 4.7,
     totalReviews: 160,
 
-    image: lizol,
+    image: "/products/home-care/lizol.png",
   },
   {
     id: 107,
@@ -213,7 +199,7 @@ const homeCare = [
     rating: 4.8,
     totalReviews: 310,
 
-    image: surfExcel,
+    image: "/products/home-care/surfexcel.png",
   },
   {
     id: 108,
@@ -239,7 +225,7 @@ const homeCare = [
     rating: 4.6,
     totalReviews: 150,
 
-    image: vimBar,
+    image: "/products/home-care/vimbar.png",
   },
   {
     id: 109,
@@ -265,7 +251,7 @@ const homeCare = [
     rating: 4.7,
     totalReviews: 130,
 
-    image: vimLiquid,
+    image: "/products/home-care/vimliquid.png",
   },
   {
     id: 110,
@@ -291,7 +277,7 @@ const homeCare = [
     rating: 4.4,
     totalReviews: 120,
 
-    image: wheel,
+    image: "/products/home-care/wheel.png",
   },
   {
     id: 111,
@@ -310,7 +296,7 @@ const homeCare = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 310,
-    image: tide,
+    image: "/products/home-care/tide.png",
   },
   {
     id: 112,
@@ -328,7 +314,7 @@ const homeCare = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 310,
-    image: comfort,
+    image: "/products/home-care/comfort.png",
   }
 ];
 

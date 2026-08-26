@@ -1,5 +1,3 @@
-import amul from "../assets/products/Dairy/amul.png";
-
 const Dairy = [
   {
     id: 501,
@@ -25,7 +23,7 @@ const Dairy = [
     rating: 4.9,
     totalReviews: 520,
 
-    image: amul,
+    image: "/products/dairy/amul.png",
   },
 ];
 

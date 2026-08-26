@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getProductImageUrl } from "../utils/image";
 import "./Orders.css";
 
 function Orders({ orders }) {
@@ -75,7 +76,7 @@ function Orders({ orders }) {
                                     >
 
                                         <img
-                                            src={item.image}
+                                            src={getProductImageUrl(item.image)}
                                             alt={item.name}
                                         />
 

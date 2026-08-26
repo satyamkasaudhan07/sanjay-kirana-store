@@ -1,17 +1,3 @@
-import chholeMasale from "../assets/products/spices-masalas/chholemasale.png";
-import goldieGaramMasala from "../assets/products/spices-masalas/goldiegarammasala.png";
-import kitchenKing from "../assets/products/spices-masalas/kitchenking.png";
-import mdhChaatMasala from "../assets/products/spices-masalas/mdh-chaat-masala.png";
-import mdhDeggiMirch from "../assets/products/spices-masalas/mdh-deggi-mirch.png";
-import mdhChanaMasala from "../assets/products/spices-masalas/mdhchanamasala.png";
-import mdhChicken from "../assets/products/spices-masalas/mdhchicken.png";
-import mdhDeggi from "../assets/products/spices-masalas/mdhdeggi.png";
-import mdhGaram from "../assets/products/spices-masalas/mdhgaram.png";
-import mdhMeat from "../assets/products/spices-masalas/mdhmeet.png";
-import meatMasala from "../assets/products/spices-masalas/meatmasala.png";
-import raytaMasala from "../assets/products/spices-masalas/rayatmasala.png";
-import sabjiMasala from "../assets/products/spices-masalas/sabjimasala.png";
-
 const spicesMasalas = [
   {
     id: 801,
@@ -29,7 +15,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 180,
-    image: goldieGaramMasala,
+    image: "/products/spices-masalas/goldiegarammasala.png",
   },
   {
     id: 802,
@@ -47,7 +33,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 220,
-    image: kitchenKing,
+    image: "/products/spices-masalas/kitchenking.png",
   },
   {
     id: 803,
@@ -65,7 +51,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 170,
-    image: mdhChaatMasala,
+    image: "/products/spices-masalas/mdh-chaat-masala.png",
   },
   {
     id: 804,
@@ -83,7 +69,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 210,
-    image: mdhDeggiMirch,
+    image: "/products/spices-masalas/mdh-deggi-mirch.png",
   },
   {
     id: 805,
@@ -101,7 +87,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 150,
-    image: mdhChanaMasala,
+    image: "/products/spices-masalas/mdhchanamasala.png",
   },
   {
     id: 806,
@@ -119,7 +105,7 @@ const spicesMasalas = [
     bestseller: false,
     rating: 4.6,
     totalReviews: 120,
-    image: mdhChicken,
+    image: "/products/spices-masalas/mdhchicken.png",
   },
   {
     id: 807,
@@ -137,7 +123,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 165,
-    image: mdhDeggi,
+    image: "/products/spices-masalas/mdhdeggi.png",
   },
   {
     id: 808,
@@ -155,7 +141,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 240,
-    image: mdhGaram,
+    image: "/products/spices-masalas/mdhgaram.png",
   },
   {
     id: 809,
@@ -173,7 +159,7 @@ const spicesMasalas = [
     bestseller: false,
     rating: 4.6,
     totalReviews: 110,
-    image: mdhMeat,
+    image: "/products/spices-masalas/mdhmeet.png",
   },
   {
     id: 810,
@@ -191,7 +177,7 @@ const spicesMasalas = [
     bestseller: false,
     rating: 4.5,
     totalReviews: 90,
-    image: meatMasala,
+    image: "/products/spices-masalas/meatmasala.png",
   },
   {
     id: 811,
@@ -209,7 +195,7 @@ const spicesMasalas = [
     bestseller: false,
     rating: 4.6,
     totalReviews: 100,
-    image: raytaMasala,
+    image: "/products/spices-masalas/rayatmasala.png",
   },
   {
     id: 812,
@@ -227,7 +213,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 180,
-    image: sabjiMasala,
+    image: "/products/spices-masalas/sabjimasala.png",
   },
   {
     id: 813,
@@ -245,7 +231,7 @@ const spicesMasalas = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 160,
-    image: chholeMasale,
+    image: "/products/spices-masalas/chholemasale.png",
   },
 ];
 

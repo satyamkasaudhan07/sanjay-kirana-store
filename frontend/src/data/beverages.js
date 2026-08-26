@@ -1,9 +1,3 @@
-import nescafe from "../assets/products/Beverages/nescafe.png";
-import nescafeJar from "../assets/products/Beverages/nescafejar.png";
-import taazaTea from "../assets/products/Beverages/taazatea.png";
-import tataAgni from "../assets/products/Beverages/tataagni.png";
-import tataTea from "../assets/products/Beverages/tatatea.png";
-
 const Beverages = [
   {
     id: 901,
@@ -29,7 +23,7 @@ const Beverages = [
     rating: 4.8,
     totalReviews: 320,
 
-    image: nescafe,
+    image: "/products/beverages/nescafe.png",
   },
   {
     id: 902,
@@ -55,7 +49,7 @@ const Beverages = [
     rating: 4.8,
     totalReviews: 240,
 
-    image: nescafeJar,
+    image: "/products/beverages/nescafejar.png",
   },
   {
     id: 903,
@@ -81,7 +75,7 @@ const Beverages = [
     rating: 4.6,
     totalReviews: 180,
 
-    image: taazaTea,
+    image: "/products/beverages/taazatea.png",
   },
   {
     id: 904,
@@ -107,7 +101,7 @@ const Beverages = [
     rating: 4.7,
     totalReviews: 210,
 
-    image: tataAgni,
+    image: "/products/beverages/tataagni.png",
   },
   {
     id: 905,
@@ -133,7 +127,7 @@ const Beverages = [
     rating: 4.8,
     totalReviews: 260,
 
-    image: tataTea,
+    image: "/products/beverages/tatatea.png",
   },
 ];
 

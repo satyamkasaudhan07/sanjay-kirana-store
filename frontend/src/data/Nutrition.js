@@ -1,8 +1,3 @@
-import nutrela from "../assets/products/Nutrition/nutrela.png";
-import nutrela10 from "../assets/products/Nutrition/nutrela10.png";
-import nutrela10Green from "../assets/products/Nutrition/nutrela10green.png";
-import nutrelaGreen from "../assets/products/Nutrition/nutrelagreen.png";
-
 const Nutrition = [
   {
     id: 1101,
@@ -28,7 +23,7 @@ const Nutrition = [
     rating: 4.8,
     totalReviews: 240,
 
-    image: nutrela,
+    image: "/products/nutrition/nutrela.png",
   },
   {
     id: 1102,
@@ -54,7 +49,7 @@ const Nutrition = [
     rating: 4.6,
     totalReviews: 95,
 
-    image: nutrela10,
+    image: "/products/nutrition/nutrela10.png",
   },
   {
     id: 1103,
@@ -80,7 +75,7 @@ const Nutrition = [
     rating: 4.6,
     totalReviews: 85,
 
-    image: nutrela10Green,
+    image: "/products/nutrition/nutrela10green.png",
   },
   {
     id: 1104,
@@ -106,7 +101,7 @@ const Nutrition = [
     rating: 4.7,
     totalReviews: 170,
 
-    image: nutrelaGreen,
+    image: "/products/nutrition/nutrelagreen.png",
   },
 ];
 

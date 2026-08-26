@@ -1,7 +1,3 @@
-import sugar from "../assets/products/salt-sugar/sugar.png";
-import tataRockSalt from "../assets/products/salt-sugar/tata-rock-salt.png";
-import tataSalt from "../assets/products/salt-sugar/tatasalt.png";
-
 const saltSugar = [
   {
     id: 301,
@@ -27,7 +23,7 @@ const saltSugar = [
     rating: 4.8,
     totalReviews: 260,
 
-    image: sugar,
+    image: "/products/salt-sugar/sugar.png",
   },
   {
     id: 302,
@@ -53,7 +49,7 @@ const saltSugar = [
     rating: 4.9,
     totalReviews: 450,
 
-    image: tataSalt,
+    image: "/products/salt-sugar/tatasalt.png",
   },
   {
     id: 303,
@@ -79,7 +75,7 @@ const saltSugar = [
     rating: 4.7,
     totalReviews: 180,
 
-    image: tataRockSalt,
+    image: "/products/salt-sugar/tata-rock-salt.png",
   },
 ];
 

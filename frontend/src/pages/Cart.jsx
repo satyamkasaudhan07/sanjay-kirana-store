@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
-import "./Cart.css";
 import { useNavigate } from "react-router-dom";
+import { getProductImageUrl } from "../utils/image";
+import "./Cart.css";
 function Cart({ cart, setCart, wishlist }) {
     const navigate = useNavigate();
 
@@ -119,7 +120,7 @@ function Cart({ cart, setCart, wishlist }) {
 
                                     <div className="cart-image-container">
                                         <img
-                                            src={item.image}
+                                            src={getProductImageUrl(item.image)}
                                             alt={item.name}
                                         />
                                     </div>
@@ -155,9 +156,9 @@ function Cart({ cart, setCart, wishlist }) {
                                                 </span>
 
                                                 <button
-                                                    onClick={increaseQuantity}
+                                                    onClick={() => increaseQuantity(item.id)}
                                                     disabled={
-                                                        cartItem.quantity >= product.stock
+                                                        item.quantity >= item.stock
                                                     }
                                                 >
                                                     +

@@ -1,19 +1,42 @@
 import "./FeaturedProducts.css";
 import ProductCard from "../ProductCard/ProductCard";
-import products from "../../data";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function FeaturedProducts({
     cart,
     setCart,
-    search,
-    selectedCategory,
     wishlist,
     setWishlist,
+    search,
 }) {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    // Get products from Flask API
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get(
+                    "http://127.0.0.1:5000/products"
+                );
+
+                setProducts(response.data);
+            } catch (err) {
+                console.error("Error fetching products:", err);
+                setError("Failed to load products.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
     const searchText = search.trim().toLowerCase();
 
-    const displayedProducts = products.filter((product) => {
-
+    const featuredProducts = products.filter((product) => {
         const matchesSearch =
             !searchText ||
             product.name?.toLowerCase().includes(searchText) ||
@@ -21,19 +44,34 @@ function FeaturedProducts({
             product.category?.toLowerCase().includes(searchText) ||
             product.subCategory?.toLowerCase().includes(searchText);
 
-        const matchesCategory =
-            selectedCategory === "All" ||
-            product.category === selectedCategory;
-
-        // Default homepage
-        // Show only featured products
-        if (!searchText && selectedCategory === "All") {
-            return product.featured;
-        }
-
-        // Search + category filter
-        return matchesSearch && matchesCategory;
+        return product.featured && matchesSearch;
     });
+
+    // Loading
+    if (loading) {
+        return (
+            <section
+                id="products"
+                className="featured-products"
+            >
+                <h2>Featured Products</h2>
+                <p>Loading products...</p>
+            </section>
+        );
+    }
+
+    // Error
+    if (error) {
+        return (
+            <section
+                id="products"
+                className="featured-products"
+            >
+                <h2>Featured Products</h2>
+                <p>{error}</p>
+            </section>
+        );
+    }
 
     return (
         <section
@@ -41,18 +79,14 @@ function FeaturedProducts({
             className="featured-products"
         >
             <h2>
-                {searchText
+                {search
                     ? `Search Results for "${search}"`
-                    : selectedCategory === "All"
-                        ? "Featured Products"
-                        : selectedCategory}
+                    : "Featured Products"}
             </h2>
 
             <div className="products-grid">
-
-                {displayedProducts.length > 0 ? (
-
-                    displayedProducts.map((product) => (
+                {featuredProducts.length > 0 ? (
+                    featuredProducts.map((product) => (
                         <ProductCard
                             key={product.id}
                             product={product}
@@ -62,20 +96,15 @@ function FeaturedProducts({
                             setWishlist={setWishlist}
                         />
                     ))
-
                 ) : (
-
                     <div className="no-products">
                         <h2>😕 No products found</h2>
 
                         <p>
-                            Try another product, brand,
-                            or category.
+                            Try another product name or brand.
                         </p>
                     </div>
-
                 )}
-
             </div>
         </section>
     );

@@ -1,7 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getProductImageUrl } from "../utils/image";
 
-import products from "../data";
 import "./ProductDetails.css";
 
 function ProductDetails({
@@ -12,11 +14,41 @@ function ProductDetails({
 }) {
     const { id } = useParams();
 
-    const product = products.find(
-        (item) => item.id === Number(id)
-    );
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-    if (!product) {
+    // Fetch product from Flask API
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(
+                    `http://127.0.0.1:5000/products/${id}`
+                );
+
+                setProduct(response.data);
+            } catch (err) {
+                console.error("Error fetching product:", err);
+                setError("Product not found.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
+
+    // Loading
+    if (loading) {
+        return (
+            <div className="product-not-found">
+                <h2>Loading product...</h2>
+            </div>
+        );
+    }
+
+    // Error / product not found
+    if (error || !product) {
         return (
             <div className="product-not-found">
                 <h2>Product not found 😕</h2>
@@ -53,6 +85,10 @@ function ProductDetails({
 
     const addToCart = () => {
         if (cartItem) {
+            if (cartItem.quantity >= product.stock) {
+                return;
+            }
+
             setCart(
                 cart.map((item) =>
                     item.id === product.id
@@ -75,6 +111,14 @@ function ProductDetails({
     };
 
     const increaseQuantity = () => {
+        if (!cartItem) {
+            return;
+        }
+
+        if (cartItem.quantity >= product.stock) {
+            return;
+        }
+
         setCart(
             cart.map((item) =>
                 item.id === product.id
@@ -88,6 +132,10 @@ function ProductDetails({
     };
 
     const decreaseQuantity = () => {
+        if (!cartItem) {
+            return;
+        }
+
         if (cartItem.quantity === 1) {
             setCart(
                 cart.filter(
@@ -136,7 +184,7 @@ function ProductDetails({
                     </button>
 
                     <img
-                        src={product.image}
+                        src={getProductImageUrl(product.image)}
                         alt={product.name}
                         className="details-image"
                     />
@@ -207,7 +255,7 @@ function ProductDetails({
                     <div className="details-stock">
 
                         {product.stock > 0
-                            ? `✓ In Stock`
+                            ? "✓ In Stock"
                             : "Out of Stock"}
 
                     </div>

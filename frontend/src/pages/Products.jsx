@@ -1,9 +1,9 @@
 import Navbar from "../components/Navbar/Navbar";
 import ProductFilters from "../components/ProductFilters/ProductFilters";
 import ProductCard from "../components/ProductCard/ProductCard";
-import products from "../data";
 import "./Products.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Products({
     cart,
@@ -11,9 +11,35 @@ function Products({
     wishlist,
     setWishlist,
 }) {
+    const [products, setProducts] = useState([]);
+
     const [search, setSearch] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [sortBy, setSortBy] = useState("default");
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    // Fetch products from Flask
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get(
+                    "http://127.0.0.1:5000/products"
+                );
+
+                setProducts(response.data);
+            } catch (err) {
+                console.error("Error fetching products:", err);
+                setError("Failed to load products.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
     const searchText = search.trim().toLowerCase();
 
     const filteredProducts = products
@@ -51,6 +77,7 @@ function Products({
             return 0;
         });
 
+    
     return (
         <>
             <Navbar
@@ -59,7 +86,6 @@ function Products({
             />
 
             <main className="products-page">
-
                 <div className="products-page-header">
                     <h1>All Products</h1>
 
@@ -99,6 +125,7 @@ function Products({
                 <div className="products-toolbar">
 
                     <div className="products-result-header">
+
                         <h2>
                             {selectedCategory === "All"
                                 ? "All Products"
@@ -108,11 +135,14 @@ function Products({
                         <span>
                             {filteredProducts.length} products
                         </span>
+
                     </div>
 
                     <select
                         value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value)}
+                        onChange={(e) =>
+                            setSortBy(e.target.value)
+                        }
                         className="sort-select"
                     >
                         <option value="default">
@@ -137,67 +167,83 @@ function Products({
                     </select>
 
                 </div>
-                {/* Results */}
 
-                <div className="products-result-header">
+                {/* Loading */}
 
-                    <h2>
-                        {selectedCategory === "All"
-                            ? "All Products"
-                            : selectedCategory}
-                    </h2>
-
-                    <span>
-                        {filteredProducts.length} products
-                    </span>
-
-                </div>
-
-                {filteredProducts.length > 0 ? (
-
-                    <div className="all-products-grid">
-
-                        {filteredProducts.map((product) => (
-                            <ProductCard
-                                key={product.id}
-                                product={product}
-                                cart={cart}
-                                setCart={setCart}
-                                wishlist={wishlist}
-                                setWishlist={setWishlist}
-                            />
-                        ))}
-
-                    </div>
-
-                ) : (
-
+                {loading && (
                     <div className="products-empty">
+                        <h2>Loading products...</h2>
+                    </div>
+                )}
 
-                        <div>
-                            😕
-                        </div>
+                {/* Error */}
 
-                        <h2>
-                            No products found
-                        </h2>
+                {!loading && error && (
+                    <div className="products-empty">
+                        <h2>😕 {error}</h2>
 
                         <p>
-                            Try a different product name,
-                            brand, or category.
+                            Make sure the Flask server is running.
                         </p>
-
-                        <button
-                            onClick={() => {
-                                setSearch("");
-                                setSelectedCategory("All");
-                            }}
-                        >
-                            Clear Filters
-                        </button>
-
                     </div>
+                )}
 
+                {/* Results */}
+
+                {!loading && !error && (
+
+                    <>
+
+                        {filteredProducts.length > 0 ? (
+
+                            <div className="all-products-grid">
+
+                                {filteredProducts.map((product) => (
+
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        cart={cart}
+                                        setCart={setCart}
+                                        wishlist={wishlist}
+                                        setWishlist={setWishlist}
+                                    />
+
+                                ))}
+
+                            </div>
+
+                        ) : (
+
+                            <div className="products-empty">
+
+                                <div>
+                                    😕
+                                </div>
+
+                                <h2>
+                                    No products found
+                                </h2>
+
+                                <p>
+                                    Try a different product name,
+                                    brand, or category.
+                                </p>
+
+                                <button
+                                    onClick={() => {
+                                        setSearch("");
+                                        setSelectedCategory("All");
+                                    }}
+                                >
+                                    Clear Filters
+                                </button>
+
+                            </div>
+
+                        )}
+
+                    </>
                 )}
 
             </main>

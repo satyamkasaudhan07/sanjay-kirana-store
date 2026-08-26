@@ -1,9 +1,3 @@
-import bailKolhu1L from "../assets/products/oil-ghee/bailkohlu1L.png";
-import bailKolhu2L from "../assets/products/oil-ghee/bailkohlu2L.png";
-import bailKolhu5L from "../assets/products/oil-ghee/bailkohlu5L.png";
-import fortune from "../assets/products/oil-ghee/fortune.png";
-import fortuneSarso from "../assets/products/oil-ghee/fortunesarso.png";
-
 const oilGhee = [
   {
     id: 401,
@@ -29,7 +23,7 @@ const oilGhee = [
     rating: 4.8,
     totalReviews: 180,
 
-    image: bailKolhu1L,
+    image: "/products/oil-ghee/bailkohlu1L.png",
   },
   {
     id: 402,
@@ -55,7 +49,7 @@ const oilGhee = [
     rating: 4.8,
     totalReviews: 120,
 
-    image: bailKolhu2L,
+    image: "/products/oil-ghee/bailkohlu2L.png",
   },
   {
     id: 403,
@@ -81,7 +75,7 @@ const oilGhee = [
     rating: 4.9,
     totalReviews: 95,
 
-    image: bailKolhu5L,
+    image: "/products/oil-ghee/bailkohlu5L.png",
   },
   {
     id: 404,
@@ -107,7 +101,7 @@ const oilGhee = [
     rating: 4.7,
     totalReviews: 240,
 
-    image: fortune,
+    image: "/products/oil-ghee/fortune.png",
   },
   {
     id: 405,
@@ -133,7 +127,7 @@ const oilGhee = [
     rating: 4.8,
     totalReviews: 170,
 
-    image: fortuneSarso,
+    image: "/products/oil-ghee/fortunesarso.png",
   },
 ];
 

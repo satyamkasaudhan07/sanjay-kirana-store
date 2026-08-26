@@ -1,6 +1,8 @@
 import "./ProductCard.css";
 import { FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { getProductImageUrl } from "../../utils/image";
+
 function ProductCard({ product, cart, setCart, wishlist, setWishlist }) {
     const {
         id,
@@ -21,7 +23,6 @@ function ProductCard({ product, cart, setCart, wishlist, setWishlist }) {
         featured,
         bestseller,
     } = product;
-
 
     const addToCart = () => {
         const existingProduct = cart.find(
@@ -64,25 +65,25 @@ function ProductCard({ product, cart, setCart, wishlist, setWishlist }) {
 
     const increaseQuantity = () => {
 
-    if (!cartItem) {
-        return;
-    }
+        if (!cartItem) {
+            return;
+        }
 
-    if (cartItem.quantity >= product.stock) {
-        return;
-    }
+        if (cartItem.quantity >= product.stock) {
+            return;
+        }
 
-    setCart(
-        cart.map((item) =>
-            item.id === product.id
-                ? {
-                    ...item,
-                    quantity: item.quantity + 1,
-                }
-                : item
-        )
-    );
-};
+        setCart(
+            cart.map((item) =>
+                item.id === product.id
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1,
+                    }
+                    : item
+            )
+        );
+    };
 
     const decreaseQuantity = () => {
         if (cartItem.quantity === 1) {
@@ -133,7 +134,7 @@ function ProductCard({ product, cart, setCart, wishlist, setWishlist }) {
             >
                 <div className="product-image-container">
                     <img
-                        src={image}
+                        src={getProductImageUrl(image)}
                         alt={name}
                         className="product-image"
                     />

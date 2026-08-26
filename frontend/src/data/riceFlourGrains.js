@@ -1,8 +1,3 @@
-import aashirvaad from "../assets/products/rice-flour-grains/aashirvaad.png";
-import nourishDaliya from "../assets/products/rice-flour-grains/nourishdaliya.png";
-import nourishSuji from "../assets/products/rice-flour-grains/nourishsuji.png";
-import nourishAata from "../assets/products/rice-flour-grains/nourishaata.png";
-import nourishArharDal from "../assets/products/rice-flour-grains/nourisharhardal.png";
 const riceFlour = [
   {
     id: 201,
@@ -28,7 +23,7 @@ const riceFlour = [
     rating: 4.8,
     totalReviews: 420,
 
-    image: aashirvaad,
+    image: "/products/rice-flour-grains/aashirvaad.png",
   },
   {
     id: 202,
@@ -54,7 +49,7 @@ const riceFlour = [
     rating: 4.6,
     totalReviews: 110,
 
-    image: nourishDaliya,
+    image: "/products/rice-flour-grains/nourishdaliya.png",
   },
   {
     id: 203,
@@ -80,7 +75,7 @@ const riceFlour = [
     rating: 4.6,
     totalReviews: 95,
 
-    image: nourishSuji,
+    image: "/products/rice-flour-grains/nourishsuji.png",
   },
   {
     id: 204,
@@ -99,7 +94,7 @@ const riceFlour = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 420,
-    image: nourishAata,
+    image: "/products/rice-flour-grains/nourishaata.png",
   },{
     id: 205,
 
@@ -117,7 +112,7 @@ const riceFlour = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 180,
-    image: nourishArharDal,
+    image: "/products/rice-flour-grains/nourisharhardal.png",
   }
 ];
 

@@ -1,8 +1,3 @@
-import goldieOneOne from "../assets/products/instant-food/goldieoneone.png";
-import lizzatPapad from "../assets/products/instant-food/lizzat.png";
-import maggi from "../assets/products/instant-food/maggi.png";
-import macaroni_pasta from "../assets/products/instant-food/nourish-macaroni-pasta.png";
-import poha from "../assets/products/instant-food/nourish-poha.png";
 const instantFood = [
   {
     id: 701,
@@ -28,7 +23,7 @@ const instantFood = [
     rating: 4.3,
     totalReviews: 90,
 
-    image: goldieOneOne,
+    image: "/products/instant-food/goldieoneone.png",
   },
   {
     id: 702,
@@ -54,7 +49,7 @@ const instantFood = [
     rating: 4.9,
     totalReviews: 680,
 
-    image: maggi,
+    image: "/products/instant-food/maggi.png",
   },
   {
     id: 703,
@@ -80,7 +75,7 @@ const instantFood = [
     rating: 4.6,
     totalReviews: 150,
 
-    image: macaroni_pasta,
+    image: "/products/instant-food/nourish-macaroni-pasta.png",
   },
   {
     id: 704,
@@ -106,7 +101,7 @@ const instantFood = [
     rating: 4.5,
     totalReviews: 120,
 
-    image: poha,
+    image: "/products/instant-food/nourish-poha.png",
   }
 ];
 

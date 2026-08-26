@@ -1,10 +1,3 @@
-import johnsonsBabyOil from "../assets/products/baby-care/Johnsonsbabyoil.png";
-import johnsonsBabyPowder from "../assets/products/baby-care/johnsonsbabypowder.png";
-import johnsonsBabySoap from "../assets/products/baby-care/Johnsonsbabysoap.png";
-import nestogen from "../assets/products/baby-care/NEstogen.png";
-import nestogen1 from "../assets/products/baby-care/nestogen1.png";
-import pampers from "../assets/products/baby-care/pampers-20.png";
-
 const babyCare = [
   {
     id: 1001,
@@ -30,7 +23,7 @@ const babyCare = [
     rating: 4.8,
     totalReviews: 320,
 
-    image: johnsonsBabyOil,
+    image: "/products/baby-care/Johnsonsbabyoil.png",
   },
   {
     id: 1002,
@@ -56,7 +49,7 @@ const babyCare = [
     rating: 4.8,
     totalReviews: 280,
 
-    image: johnsonsBabyPowder,
+    image: "/products/baby-care/johnsonsbabypowder.png",
   },
   {
     id: 1003,
@@ -82,7 +75,7 @@ const babyCare = [
     rating: 4.7,
     totalReviews: 210,
 
-    image: johnsonsBabySoap,
+    image: "/products/baby-care/Johnsonsbabysoap.png",
   },
   {
     id: 1004,
@@ -108,7 +101,7 @@ const babyCare = [
     rating: 4.7,
     totalReviews: 95,
 
-    image: nestogen1,
+    image: "/products/baby-care/nestogen1.png",
   },
   {
     id: 1005,
@@ -134,7 +127,7 @@ const babyCare = [
     rating: 4.7,
     totalReviews: 82,
 
-    image: nestogen,
+    image: "/products/baby-care/NEstogen.png",
   },
   {
     id: 1006,
@@ -160,7 +153,7 @@ const babyCare = [
     rating: 4.8,
     totalReviews: 290,
 
-    image: pampers,
+    image: "/products/baby-care/pampers-20.png",
   }
 ];
 

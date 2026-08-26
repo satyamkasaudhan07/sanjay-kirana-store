@@ -106,6 +106,7 @@ function App() {
             <Checkout
               cart={cart}
               setCart={setCart}
+              wishlist={wishlist}
               setOrders={setOrders}
             />
           }

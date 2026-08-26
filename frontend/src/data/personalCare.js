@@ -1,40 +1,3 @@
-import ajayquesttoothbrush from "../assets/products/personal-care/ajay-quest-toothbrush.png";
-import ajaySensitive from "../assets/products/personal-care/ajaySensitive.png";
-import aloevera from "../assets/products/personal-care/aloevera.png";
-import boroline from "../assets/products/personal-care/boroline.png";
-import boroplus from "../assets/products/personal-care/boroplus.png";
-import closeup from "../assets/products/personal-care/Closeup.png";
-import colgate from "../assets/products/personal-care/colgate.png";
-import daburAmla from "../assets/products/personal-care/dabaramla.png";
-import dabarLalToothpaste from "../assets/products/personal-care/dabarlaltoothpaste.png";
-import daburLalTel from "../assets/products/personal-care/daburlaltel.png";
-import dantKanti from "../assets/products/personal-care/dantkanti.png";
-import dermicool from "../assets/products/personal-care/dermicool.png";
-import dove from "../assets/products/personal-care/dovesoap.png";
-import figaro from "../assets/products/personal-care/figarooil200ml.png";
-import garnierFacewash from "../assets/products/personal-care/garnierfacewash.png";
-import garnierHairColor from "../assets/products/personal-care/garnierhaircolor.png";
-import glowLovelyCream from "../assets/products/personal-care/glow&lovelycream.png";
-import gulabari from "../assets/products/personal-care/gulabarirosewater.png";
-import hamam from "../assets/products/personal-care/hamamsoap.png";
-import himalayaFacewash from "../assets/products/personal-care/himalayafacewash.png";
-import himgange from "../assets/products/personal-care/himgangeoil.png";
-import jasmine from "../assets/products/personal-care/jasminehairoil.png";
-import lux from "../assets/products/personal-care/lux.png";
-import navratanOil from "../assets/products/personal-care/navratanoil.png";
-import navratanRedOil from "../assets/products/personal-care/navratanredoil.png";
-import nirmaSoap from "../assets/products/personal-care/Nirmasoap.png";
-import nycil from "../assets/products/personal-care/nycil.png";
-import patanjaliFacewash from "../assets/products/personal-care/patanjalifacewaash.png";
-import pears from "../assets/products/personal-care/pearssoap.png";
-import pondsFacewash from "../assets/products/personal-care/pondsfacwash.png";
-import rahatRooh from "../assets/products/personal-care/rahatrooh.png";
-import santoor from "../assets/products/personal-care/santoor.png";
-import sensodyne from "../assets/products/personal-care/sensodyne-toothpaste.png";
-import streax from "../assets/products/personal-care/streaxhaircolor.png";
-import viccoTurmeric from "../assets/products/personal-care/vicco-turmeric.png";
-import zandubalm from "../assets/products/personal-care/zandubalm.png";
-
 const personalCare = [
     {
         id: 0,
@@ -52,7 +15,7 @@ const personalCare = [
         bestseller: false,
         rating: 4.5,
         totalReviews: 120,
-        image: ajayquesttoothbrush,
+        image: "/products/personal-care/ajay-quest-toothbrush.png",
     },
     {
         id: 1,
@@ -78,7 +41,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 245,
 
-        image: colgate,
+        image: "/products/personal-care/colgate.png",
     },
     {
         id: 2,
@@ -95,7 +58,7 @@ const personalCare = [
         bestseller: true,
         totalReviews: 180,
         stock: 40,
-        image: closeup,
+        image: "/products/personal-care/Closeup.png",
         featured: true,
     },
     {
@@ -112,7 +75,7 @@ const personalCare = [
         rating: 4.4,
         totalReviews: 120,
         stock: 35,
-        image: dabarLalToothpaste,
+        image: "/products/personal-care/dabarlaltoothpaste.png",
         featured: false,
     },
     {
@@ -129,7 +92,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 95,
         stock: 25,
-        image: daburLalTel,
+        image: "/products/personal-care/daburlaltel.png",
         featured: false,
     },
     {
@@ -146,7 +109,7 @@ const personalCare = [
         rating: 4.5,
         totalReviews: 160,
         stock: 40,
-        image: dantKanti,
+        image: "/products/personal-care/dantkanti.png",
         featured: false,
     },
     {
@@ -163,7 +126,7 @@ const personalCare = [
         rating: 4.4,
         totalReviews: 80,
         stock: 20,
-        image: dermicool,
+        image: "/products/personal-care/dermicool.png",
         featured: false,
     },
     {
@@ -180,7 +143,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 210,
         stock: 25,
-        image: garnierFacewash,
+        image: "/products/personal-care/garnierfacewash.png",
         featured: true,
     },
     {
@@ -197,7 +160,7 @@ const personalCare = [
         rating: 4.3,
         totalReviews: 90,
         stock: 20,
-        image: glowLovelyCream,
+        image: "/products/personal-care/glow&lovelycream.png",
         featured: false,
     },
     {
@@ -214,7 +177,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 175,
         stock: 30,
-        image: himalayaFacewash,
+        image: "/products/personal-care/himalayafacewash.png",
         featured: true,
     },
     {
@@ -231,7 +194,7 @@ const personalCare = [
         rating: 4.4,
         totalReviews: 160,
         stock: 80,
-        image: lux,
+        image: "/products/personal-care/lux.png",
         featured: false,
     },
     {
@@ -248,7 +211,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 130,
         stock: 30,
-        image: navratanOil,
+        image: "/products/personal-care/navratanoil.png",
         featured: true,
     },
     {
@@ -264,7 +227,7 @@ const personalCare = [
         rating: 4.5,
         totalReviews: 70,
         stock: 20,
-        image: navratanRedOil,
+        image: "/products/personal-care/navratanredoil.png",
         featured: false,
     },
     {
@@ -281,7 +244,7 @@ const personalCare = [
         rating: 4.2,
         totalReviews: 60,
         stock: 70,
-        image: nirmaSoap,
+        image: "/products/personal-care/Nirmasoap.png",
         featured: false,
     },
     {
@@ -298,7 +261,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 100,
         stock: 25,
-        image: nycil,
+        image: "/products/personal-care/nycil.png",
         featured: false,
     },
     {
@@ -315,7 +278,7 @@ const personalCare = [
         rating: 4.4,
         totalReviews: 95,
         stock: 30,
-        image: patanjaliFacewash,
+        image: "/products/personal-care/patanjalifacewaash.png",
         featured: false,
     },
     {
@@ -332,7 +295,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 150,
         stock: 25,
-        image: pondsFacewash,
+        image: "/products/personal-care/pondsfacwash.png",
         featured: true,
     },
     {
@@ -349,7 +312,7 @@ const personalCare = [
         rating: 4.5,
         totalReviews: 120,
         stock: 50,
-        image: santoor,
+        image: "/products/personal-care/santoor.png",
         featured: false,
     },
     {
@@ -366,7 +329,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: aloevera,
+        image: "/products/personal-care/aloevera.png",
         featured: false,
     },
     {
@@ -383,7 +346,7 @@ const personalCare = [
         rating: 4.5,
         totalReviews: 150,
         stock: 40,
-        image: sensodyne,
+        image: "/products/personal-care/sensodyne-toothpaste.png",
         featured: false,
     },
     {
@@ -400,7 +363,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: viccoTurmeric,
+        image: "/products/personal-care/vicco-turmeric.png",
         featured: false,
     },
     {
@@ -417,7 +380,7 @@ const personalCare = [
         rating: 4.5,
         totalReviews: 130,
         stock: 40,
-        image: ajaySensitive,
+        image: "/products/personal-care/ajaySensitive.png",
         featured: false,
     },{
         id: 25,
@@ -433,7 +396,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: boroline,
+        image: "/products/personal-care/boroline.png",
         featured: false,
     },
     {
@@ -450,7 +413,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: boroplus,
+        image: "/products/personal-care/boroplus.png",
         featured: false,
     },{
         id: 27,
@@ -466,7 +429,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 130,
         stock: 30,
-        image: daburAmla,
+        image: "/products/personal-care/dabaramla.png",
         featured: true,
     }
     ,{
@@ -483,7 +446,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 130,
         stock: 30,
-        image: figaro,
+        image: "/products/personal-care/figarooil200ml.png",
         featured: true,
     },{
         id: 29,
@@ -499,7 +462,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: gulabari,
+        image: "/products/personal-care/gulabarirosewater.png",
         featured: false,
     },{
         id: 30,
@@ -515,7 +478,7 @@ const personalCare = [
         rating: 4.2,
         totalReviews: 60,
         stock: 70,
-        image: hamam,
+        image: "/products/personal-care/hamamsoap.png",
         featured: false,
     },{
         id: 31,
@@ -531,7 +494,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 130,
         stock: 30,
-        image: himgange,
+        image: "/products/personal-care/himgangeoil.png",
         featured: true,
     }
     ,{
@@ -548,7 +511,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 130,
         stock: 30,
-        image: jasmine,
+        image: "/products/personal-care/jasminehairoil.png",
         featured: true,
     },{
         id: 33,
@@ -564,7 +527,7 @@ const personalCare = [
         rating: 4.2,
         totalReviews: 60,
         stock: 70,
-        image: pears,
+        image: "/products/personal-care/pearssoap.png",
         featured: false,
     },{
         id: 34,
@@ -580,7 +543,7 @@ const personalCare = [
         rating: 4.2,
         totalReviews: 60,
         stock: 70,
-        image: dove,
+        image: "/products/personal-care/dovesoap.png",
         featured: false,
     }
     ,{
@@ -597,7 +560,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: rahatRooh,
+        image: "/products/personal-care/rahatrooh.png",
         featured: false,
     },{
         id: 36,
@@ -613,7 +576,7 @@ const personalCare = [
         rating: 4.6,
         totalReviews: 140,
         stock: 35,
-        image: zandubalm,
+        image: "/products/personal-care/zandubalm.png",
         featured: false,
     },{
         id: 37,
@@ -629,7 +592,7 @@ const personalCare = [
         rating: 4.7,
         totalReviews: 130,
         stock: 30,
-        image: streax,
+        image: "/products/personal-care/streaxhaircolor.png",
         featured: true,
     }
 ];

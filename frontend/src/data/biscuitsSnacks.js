@@ -1,17 +1,3 @@
-import twoInOne from "../assets/products/biscuits-snacks/2in1.png";
-import alooBhujia from "../assets/products/biscuits-snacks/aloobhujiya.png";
-import bhujiya from "../assets/products/biscuits-snacks/bhujiya.png";
-import butterBake from "../assets/products/biscuits-snacks/butterbake.png";
-import goodDay from "../assets/products/biscuits-snacks/goodday.png";
-import haldiramNavratan from "../assets/products/biscuits-snacks/haldiramnavratn.png";
-import khattaMeetha from "../assets/products/biscuits-snacks/khattameetha.png";
-import krackJack from "../assets/products/biscuits-snacks/krackjack.png";
-import monaco from "../assets/products/biscuits-snacks/monaco.png";
-import moongNamkeen from "../assets/products/biscuits-snacks/moongnamkeen.png";
-import oreo from "../assets/products/biscuits-snacks/oreo.png";
-import parleG from "../assets/products/biscuits-snacks/parleG.png";
-import parleGold from "../assets/products/biscuits-snacks/parlegold.png";
-
 const biscuitsSnacks = [
   {
     id: 601,
@@ -29,7 +15,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 450,
-    image: parleG,
+    image: "/products/biscuits-snacks/parleG.png",
   },
   {
     id: 602,
@@ -47,7 +33,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 280,
-    image: parleGold,
+    image: "/products/biscuits-snacks/parlegold.png",
   },
   {
     id: 603,
@@ -65,7 +51,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 340,
-    image: goodDay,
+    image: "/products/biscuits-snacks/goodday.png",
   },
   {
     id: 604,
@@ -83,7 +69,7 @@ const biscuitsSnacks = [
     bestseller: false,
     rating: 4.5,
     totalReviews: 160,
-    image: butterBake,
+    image: "/products/biscuits-snacks/butterbake.png",
   },
   {
     id: 605,
@@ -101,7 +87,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.6,
     totalReviews: 210,
-    image: krackJack,
+    image: "/products/biscuits-snacks/krackjack.png",
   },
   {
     id: 606,
@@ -119,7 +105,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 230,
-    image: monaco,
+    image: "/products/biscuits-snacks/monaco.png",
   },
   {
     id: 607,
@@ -137,7 +123,7 @@ const biscuitsSnacks = [
     bestseller: false,
     rating: 4.4,
     totalReviews: 120,
-    image: twoInOne,
+    image: "/products/biscuits-snacks/2in1.png",
   },
   {
     id: 608,
@@ -155,7 +141,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 310,
-    image: alooBhujia,
+    image: "/products/biscuits-snacks/aloobhujiya.png",
   },
   {
     id: 609,
@@ -173,7 +159,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 260,
-    image: bhujiya,
+    image: "/products/biscuits-snacks/bhujiya.png",
   },
   {
     id: 610,
@@ -191,7 +177,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 290,
-    image: haldiramNavratan,
+    image: "/products/biscuits-snacks/haldiramnavratn.png",
   },
   {
     id: 611,
@@ -209,7 +195,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.7,
     totalReviews: 210,
-    image: khattaMeetha,
+    image: "/products/biscuits-snacks/khattameetha.png",
   },
   {
     id: 612,
@@ -227,7 +213,7 @@ const biscuitsSnacks = [
     bestseller: false,
     rating: 4.6,
     totalReviews: 180,
-    image: moongNamkeen,
+    image: "/products/biscuits-snacks/moongnamkeen.png",
   },
   {
     id: 613,
@@ -245,7 +231,7 @@ const biscuitsSnacks = [
     bestseller: true,
     rating: 4.8,
     totalReviews: 450,
-    image: oreo,
+    image: "/products/biscuits-snacks/oreo.png",
   }
 ];
 
