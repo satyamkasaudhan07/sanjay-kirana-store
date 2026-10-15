@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { getProductImageUrl } from "../utils/image";
 import "./Cart.css";
@@ -94,9 +95,7 @@ function Cart({ cart, setCart, wishlist }) {
 
                         <button
                             className="continue-shopping"
-                            onClick={() =>
-                                window.location.href = "/"
-                            }
+                            onClick={() => navigate("/products")}
                         >
                             Start Shopping
                         </button>
@@ -222,16 +221,23 @@ function Cart({ cart, setCart, wishlist }) {
                             </div>
 
                             {subtotal > 0 && subtotal < 500 && (
-                                <p className="free-delivery-message">
-                                    Add ₹{500 - subtotal} more
-                                    for FREE delivery 🎉
-                                </p>
+                                <div className="free-delivery-message">
+                                    <div className="delivery-progress-track">
+                                        <div
+                                            className="delivery-progress-fill"
+                                            style={{ width: `${Math.min(100, (subtotal / 500) * 100)}%` }}
+                                        />
+                                    </div>
+                                    <p>
+                                        Add <strong>₹{500 - subtotal}</strong> more for <strong>FREE delivery</strong> 🎉
+                                    </p>
+                                </div>
                             )}
 
                             {subtotal >= 500 && (
-                                <p className="free-delivery-message">
-                                    🎉 You've unlocked FREE delivery!
-                                </p>
+                                <div className="free-delivery-message unlocked">
+                                    <p>🎉 You've unlocked <strong>FREE delivery!</strong></p>
+                                </div>
                             )}
 
                             <div className="summary-divider" />
@@ -258,6 +264,7 @@ function Cart({ cart, setCart, wishlist }) {
                 )}
 
             </div>
+            <Footer />
         </>
     );
 }

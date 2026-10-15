@@ -1,9 +1,11 @@
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 import ProductFilters from "../components/ProductFilters/ProductFilters";
 import ProductCard from "../components/ProductCard/ProductCard";
 import "./Products.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useLocation } from "react-router-dom";
+import api, { getApiErrorMessage } from "../utils/api";
 
 function Products({
     cart,
@@ -11,27 +13,39 @@ function Products({
     wishlist,
     setWishlist,
 }) {
+    const location = useLocation();
     const [products, setProducts] = useState([]);
 
     const [search, setSearch] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedCategory, setSelectedCategory] = useState(() => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("category") || "All";
+    });
     const [sortBy, setSortBy] = useState("default");
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    // Sync category when URL query parameter changes
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const cat = params.get("category");
+        if (cat) {
+            setSelectedCategory(cat);
+        } else {
+            setSelectedCategory("All");
+        }
+    }, [location.search]);
+
     // Fetch products from Flask
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get(
-                    "http://127.0.0.1:5000/products"
-                );
-
+                const response = await api.get("/products");
                 setProducts(response.data);
             } catch (err) {
                 console.error("Error fetching products:", err);
-                setError("Failed to load products.");
+                setError(getApiErrorMessage(err, "Failed to load products."));
             } finally {
                 setLoading(false);
             }
@@ -247,6 +261,7 @@ function Products({
                 )}
 
             </main>
+            <Footer />
         </>
     );
 }

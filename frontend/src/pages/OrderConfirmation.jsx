@@ -1,4 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 import "./OrderConfirmation.css";
 
 function OrderConfirmation() {
@@ -8,18 +10,26 @@ function OrderConfirmation() {
 
     if (!order) {
         return (
-            <div className="order-not-found">
-                <h2>Order not found 😕</h2>
+            <>
+                <Navbar cart={[]} wishlist={[]} />
+                <div className="order-confirmation">
+                    <div className="order-not-found">
+                        <h2>Order not found 😕</h2>
 
-                <Link to="/">
-                    Go to Home
-                </Link>
-            </div>
+                        <Link to="/">
+                            Go to Home
+                        </Link>
+                    </div>
+                </div>
+                <Footer />
+            </>
         );
     }
 
     return (
-        <div className="order-confirmation">
+        <>
+            <Navbar cart={[]} wishlist={[]} />
+            <div className="order-confirmation">
 
             <div className="confirmation-card">
 
@@ -100,6 +110,8 @@ function OrderConfirmation() {
             </div>
 
         </div>
+        <Footer />
+        </>
     );
 }
 

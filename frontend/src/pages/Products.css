@@ -12,7 +12,7 @@
 
 .products-page-header h1 {
     margin: 0 0 8px;
-    color: #2e7d32;
+    color: var(--color-primary, #176534);
     font-size: 2.2rem;
 }
 
@@ -52,7 +52,8 @@
 }
 
 .products-search input:focus {
-    border-color: #2e7d32;
+    border-color: var(--color-primary, #176534);
+    box-shadow: 0 0 0 3px rgba(23, 101, 52, 0.12);
 }
 
 .products-search button {
@@ -156,17 +157,23 @@
 .products-empty button {
     margin-top: 15px;
 
-    padding: 11px 22px;
+    padding: 12px 24px;
 
     border: none;
-    border-radius: 9px;
+    border-radius: 10px;
 
-    background: #2e7d32;
+    background: var(--color-primary, #176534);
     color: white;
 
     font-weight: 600;
 
     cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.products-empty button:hover {
+    background: var(--color-primary-dark, #114b27);
+    transform: translateY(-2px);
 }
 
 
@@ -236,7 +243,8 @@
 }
 
 .sort-select:focus {
-    border-color: #2e7d32;
+    border-color: var(--color-primary, #176534);
+    box-shadow: 0 0 0 2px rgba(23, 101, 52, 0.12);
 }
 
 @media (max-width: 600px) {

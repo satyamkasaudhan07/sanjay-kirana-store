@@ -137,6 +137,10 @@ function ProductCard({ product, cart, setCart, wishlist, setWishlist }) {
                         src={getProductImageUrl(image)}
                         alt={name}
                         className="product-image"
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "/hero.png";
+                        }}
                     />
                 </div>
             </Link>

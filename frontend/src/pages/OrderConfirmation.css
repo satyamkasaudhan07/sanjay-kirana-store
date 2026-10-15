@@ -37,8 +37,8 @@
 
     border-radius: 50%;
 
-    background: #e8f5e9;
-    color: #2e7d32;
+    background: var(--color-primary-light, #eaf3ed);
+    color: var(--color-primary, #176534);
 
     font-size: 2.5rem;
     font-weight: 700;
@@ -47,7 +47,7 @@
 .confirmation-card h1 {
     margin: 0;
 
-    color: #2e7d32;
+    color: var(--color-primary, #176534);
 
     font-size: 2rem;
 }
@@ -143,7 +143,7 @@
 
     padding: 13px 25px;
 
-    background: #2e7d32;
+    background: var(--color-primary, #176534);
     color: white;
 
     text-decoration: none;
@@ -156,7 +156,7 @@
 }
 
 .home-btn:hover {
-    background: #1b5e20;
+    background: var(--color-primary-dark, #114b27);
 
     transform: translateY(-2px);
 }
@@ -174,7 +174,7 @@
 }
 
 .order-not-found a {
-    color: #2e7d32;
+    color: var(--color-primary, #176534);
 
     font-weight: 600;
 }

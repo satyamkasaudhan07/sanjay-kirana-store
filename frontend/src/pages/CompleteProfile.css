@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Complete Profile (Customer Onboarding) Page Styles
+   Brand Theme: Forest Green (#176534), Warm Cream (#F4F2E8), Orange (#F28C28)
+   ========================================================================== */
+
+.complete-profile-page {
+    background: #f4f2e8;
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: inherit;
+}
+
+.complete-profile-card {
+    background: #ffffff;
+    max-width: 720px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(23, 101, 52, 0.08);
+    border: 1px solid rgba(23, 101, 52, 0.12);
+    padding: 36px 40px;
+}
+
+/* Header */
+.onboarding-header {
+    text-align: center;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #eef0ea;
+    padding-bottom: 24px;
+}
+
+.onboarding-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eaf5ed;
+    color: #176534;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.onboarding-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #176534;
+    margin-bottom: 8px;
+}
+
+.onboarding-header p {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+/* Alerts */
+.onboarding-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+
+.onboarding-alert.error {
+    background: #fdf2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.onboarding-alert.success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 26px;
+    background: #fafaf8;
+    border: 1px solid #ebece6;
+    border-radius: 12px;
+    padding: 20px 22px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #176534;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e2e4dc;
+}
+
+.section-title h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #176534;
+}
+
+/* Grids */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 6px;
+}
+
+.req-star {
+    color: #dc2626;
+    margin-left: 2px;
+}
+
+.opt-tag {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #777777;
+    margin-left: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #1e293b;
+    padding: 10px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #176534;
+    box-shadow: 0 0 0 3px rgba(23, 101, 52, 0.12);
+}
+
+.field-hint {
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* Read-only phone field */
+.readonly-phone-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.phone-icon {
+    position: absolute;
+    left: 12px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.readonly-input {
+    width: 100%;
+    padding-left: 36px !important;
+    padding-right: 120px !important;
+    background: #f1f5f9 !important;
+    color: #334155 !important;
+    font-weight: 600;
+    cursor: not-allowed;
+    border-color: #cbd5e1 !important;
+}
+
+.verified-pill {
+    position: absolute;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+/* Delivery radius alert notice */
+.delivery-radius-notice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+
+.delivery-radius-notice svg {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    color: #f28c28;
+}
+
+/* Submit Action Button */
+.form-submit-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.onboarding-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #176534;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(23, 101, 52, 0.25);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.onboarding-submit-btn:hover:not(:disabled) {
+    background: #14532d;
+    box-shadow: 0 6px 16px rgba(23, 101, 52, 0.35);
+    transform: translateY(-1px);
+}
+
+.onboarding-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.onboarding-submit-btn:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .complete-profile-card {
+        padding: 24px 20px;
+    }
+
+    .onboarding-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .form-grid-2,
+    .form-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .readonly-input {
+        padding-right: 80px !important;
+        font-size: 0.88rem;
+    }
+
+    .verified-pill {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+}
+

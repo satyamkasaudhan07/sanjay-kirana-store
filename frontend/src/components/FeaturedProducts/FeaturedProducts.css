@@ -1,28 +1,83 @@
+/* ─────────────────────────────────────
+   SANJAY KIRANA STORE — FEATURED PRODUCTS
+───────────────────────────────────── */
+
 .featured-products {
-    padding: 60px 8%;
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto;
+    padding: 30px var(--container-pad, 5%) 60px;
+    width: 100%;
+}
+
+.featured-products-header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .featured-products h2 {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 40px;
-    font-size: 2rem;
+    color: var(--color-primary, #176534);
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
 }
 
+.featured-subtitle {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ─── Grid Layout ─────────────────── */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 20px;
 }
 
+/* ─── Status / Empty States ───────── */
 .no-products {
     width: 100%;
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    background: #ffffff;
+    border-radius: var(--radius-md, 14px);
+    border: 1px solid var(--color-border, #e5e7eb);
+    color: #6b7280;
+    grid-column: 1 / -1;
 }
 
 .no-products h2 {
-    color: #2e7d32;
-    margin-bottom: 10px;
+    color: var(--color-text, #1f2937);
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+/* ─── Responsive Breakdown ────────── */
+@media (max-width: 1100px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .featured-products h2 {
+        font-size: 1.55rem;
+    }
+
+    .featured-products {
+        padding: 20px var(--container-pad, 5%) 45px;
+    }
+}
+
+@media (max-width: 420px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
 }

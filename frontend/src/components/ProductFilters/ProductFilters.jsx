@@ -1,20 +1,5 @@
 import "./ProductFilters.css";
-
-const categories = [
-    "All",
-    "Personal Care",
-    "Home Care",
-    "Baby Care",
-    "Beverages",
-    "Biscuits & Snacks",
-    "Dairy",
-    "Instant Food",
-    "Nutrition",
-    "Oil & Ghee",
-    "Rice, Flour & Grains",
-    "Salt & Sugar",
-    "Spices & Masalas",
-];
+import { CATEGORY_NAMES } from "../../utils/categories";
 
 function ProductFilters({
     selectedCategory,
@@ -22,10 +7,8 @@ function ProductFilters({
 }) {
     return (
         <section className="product-filters">
-
             <div className="category-chips">
-
-                {categories.map((category) => (
+                {CATEGORY_NAMES.map((category) => (
                     <button
                         key={category}
                         className={
@@ -40,9 +23,7 @@ function ProductFilters({
                         {category}
                     </button>
                 ))}
-
             </div>
-
         </section>
     );
 }

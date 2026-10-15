@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Owner Login Page Styles
+   Theme: Amber/Gold (#b45309) & Forest Green (#176534) on Warm Cream (#F4F2E8)
+   ========================================================================== */
+
+.owner-login-page {
+    min-height: 100vh;
+    background: #f4f2e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    font-family: inherit;
+}
+
+.owner-login-card {
+    background: #ffffff;
+    max-width: 480px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 12px 36px rgba(180, 83, 9, 0.12);
+    border: 1.5px solid rgba(180, 83, 9, 0.2);
+    padding: 36px 32px;
+    text-align: center;
+}
+
+.owner-portal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.crown-icon {
+    color: #d97706;
+    font-size: 1rem;
+}
+
+.owner-login-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #176534;
+    margin-bottom: 4px;
+}
+
+.owner-subhead {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 12px;
+}
+
+.owner-instructions {
+    font-size: 0.88rem;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+/* Alerts */
+.owner-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.owner-alert.error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.owner-alert.success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* Destination box */
+.owner-destination-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: #fafaf8;
+    border: 1.5px dashed #d97706;
+    border-radius: 12px;
+    padding: 18px 16px;
+    margin-bottom: 24px;
+}
+
+.owner-destination-box svg {
+    font-size: 1.5rem;
+    color: #d97706;
+}
+
+.destination-text .label {
+    display: block;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.destination-text .number {
+    font-size: 1.15rem;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.fixed-pill {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* Form */
+.owner-login-form .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.owner-login-form label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 6px;
+}
+
+.otp-large-input {
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-align: center;
+    padding: 12px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.otp-large-input:focus {
+    outline: none;
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+}
+
+/* Action button */
+.owner-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.primary-btn {
+    background: #92400e;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(146, 64, 14, 0.25);
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: #78350f;
+    box-shadow: 0 6px 16px rgba(146, 64, 14, 0.35);
+}
+
+.primary-btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Secondary Actions */
+.form-secondary-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    font-size: 0.85rem;
+}
+
+.resend-link {
+    background: none;
+    border: none;
+    color: #92400e;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.resend-link:disabled {
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.back-link {
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-link:hover {
+    color: #334155;
+    text-decoration: underline;
+}
+
+/* Footer */
+.owner-login-footer {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.85rem;
+}
+
+.footer-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #176534;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-nav-link:hover {
+    text-decoration: underline;
+}
+
+.dot-sep {
+    color: #cbd5e1;
+}
+

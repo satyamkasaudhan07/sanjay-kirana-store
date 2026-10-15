@@ -1,0 +1,285 @@
+/* ─────────────────────────────────────
+   SANJAY KIRANA STORE — FOOTER STYLES
+───────────────────────────────────── */
+
+.site-footer {
+    background-color: #0f3d1f;   /* Deep Forest Slate */
+    color: #e5ede7;
+    margin-top: auto;
+    border-top: 3px solid var(--color-accent, #f28c28);
+    font-size: 0.92rem;
+}
+
+.footer-container {
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto;
+    padding: 55px var(--container-pad, 5%) 40px;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1.6fr;
+    gap: 40px;
+}
+
+/* ─── Columns ─────────────────────── */
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.2px;
+    position: relative;
+}
+
+.footer-col h4::after {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--color-accent, #f28c28);
+    margin-top: 6px;
+    border-radius: 2px;
+}
+
+/* ─── Brand Column ────────────────── */
+.footer-brand-col .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.footer-brand-col .footer-logo svg {
+    font-size: 1.8rem;
+    color: var(--color-accent, #f28c28);
+}
+
+.footer-desc {
+    color: #b9cfc0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 18px;
+}
+
+.footer-verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm, 8px);
+    color: #f4f2e8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.footer-owner-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(242, 140, 40, 0.12);
+    border: 1px solid rgba(242, 140, 40, 0.35);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm, 8px);
+    color: #fef3e7;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.footer-owner-card strong {
+    color: #ffffff;
+}
+
+.owner-divider {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-phone-btn {
+    color: var(--color-accent, #f28c28);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.15s ease;
+}
+
+.footer-phone-btn:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-delivery-notice {
+    background: rgba(23, 101, 52, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm, 8px);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.footer-delivery-notice .notice-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.footer-delivery-notice p {
+    color: #f4f2e8;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.footer-delivery-notice a {
+    color: var(--color-accent, #f28c28);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.footer-delivery-notice a:hover {
+    text-decoration: underline;
+}
+
+.badge-pin {
+    font-size: 1rem;
+}
+
+/* ─── Links ───────────────────────── */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: #b9cfc0;
+    text-decoration: none;
+    transition: color var(--transition-fast, 0.2s), transform var(--transition-fast, 0.2s);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* ─── Policies ────────────────────── */
+.footer-policy-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-policy-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.policy-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.footer-policy-item strong {
+    color: #ffffff;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.footer-policy-item p {
+    color: #b9cfc0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ─── Bottom Bar ──────────────────── */
+.footer-bottom {
+    background: #092613;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 18px var(--container-pad, 5%);
+}
+
+.footer-bottom-container {
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #9cb8a4;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-subtext {
+    color: #7d9e87;
+}
+
+/* ─── Responsive Breakdown ────────── */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 1.5fr 1fr 1fr;
+    }
+
+    .footer-policy-col {
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 10px;
+        padding-top: 25px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 45px var(--container-pad, 5%) 35px;
+        gap: 30px;
+    }
+
+    .footer-brand-col {
+        grid-column: span 2;
+    }
+
+    .footer-policy-col {
+        grid-column: span 2;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand-col {
+        grid-column: span 1;
+    }
+
+    .footer-policy-col {
+        grid-column: span 1;
+    }
+}
+

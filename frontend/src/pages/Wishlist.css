@@ -6,7 +6,7 @@
 
 .wishlist-page h1 {
     text-align: center;
-    color: #2e7d32;
+    color: var(--color-primary, #176534);
     margin-bottom: 40px;
     font-size: 2.2rem;
 }
@@ -15,6 +15,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .empty-wishlist {
@@ -40,11 +42,17 @@
 .continue-shopping {
     display: inline-block;
     padding: 12px 24px;
-    background: #2e7d32;
+    background: var(--color-primary, #176534);
     color: white;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.continue-shopping:hover {
+    background: var(--color-primary-dark, #114b27);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 1000px) {
