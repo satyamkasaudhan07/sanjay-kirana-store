@@ -447,9 +447,19 @@ def verify_msg91_token():
 
         # Verify response: must be HTTP 200 and type == "success"
         if resp.status_code != 200 or resp_data.get("type") != "success":
-            error_reason = resp_data.get("message") or "Access token verification failed. The code may be invalid or expired."
-            if str(resp_data.get("code")) == "418":
-                error_reason = "MSG91 API Security restriction (Code 418): Server IP is not whitelisted. Please disable 'API Security' or whitelist your server IP in MSG91 dashboard."
+            error_reason = str(resp_data.get("message") or "Access token verification failed. The code may be invalid or expired.")
+            code_str = str(resp_data.get("code", ""))
+
+            if "ipblock" in error_reason.lower() or "blocked" in error_reason.lower() or code_str == "418":
+                error_reason = (
+                    "MSG91 Gateway Restriction (IPBlocked): Request was blocked by the SMS provider's anti-flood firewall. "
+                    "Please wait for the 15-minute cooldown to expire or unblock your IP in MSG91 Token Settings."
+                )
+                return jsonify({"error": error_reason, "code": "IPBlocked"}), 429
+            elif "throttle" in error_reason.lower() or resp.status_code == 429:
+                error_reason = "MSG91 Throttle Limit: Too many verification attempts. Please wait 15 minutes before trying again."
+                return jsonify({"error": error_reason, "code": "Throttled"}), 429
+
             return jsonify({"error": error_reason}), 400
 
         raw_identifier = str(resp_data.get("message", "")).strip()
@@ -1073,15 +1083,21 @@ def admin_verify_msg91_token():
                 return jsonify({"error": "Unable to verify access token with SMS gateway provider. Please try again."}), 502
 
         if resp.status_code != 200 or resp_data.get("type") != "success":
-            err_msg = resp_data.get("message") or "Access token verification failed. Invalid or expired token."
-            if str(resp_data.get("code")) == "418" or "whitelist" in str(err_msg).lower() or "ip" in str(err_msg).lower():
-                err_msg = (
-                    "MSG91 API Security restriction (Code 418): Server IP is not whitelisted. "
-                    "Please disable 'IP Whitelist' in the MSG91 dashboard under Security Settings "
-                    "or whitelist your server's public IP address."
-                )
+            err_msg = str(resp_data.get("message") or "Access token verification failed. Invalid or expired token.")
+            code_str = str(resp_data.get("code", ""))
             if connection:
                 connection.close()
+
+            if "ipblock" in err_msg.lower() or "blocked" in err_msg.lower() or code_str == "418" or "whitelist" in err_msg.lower():
+                err_msg = (
+                    "MSG91 Gateway Restriction (IPBlocked): Request was blocked by the SMS provider's anti-flood firewall or IP whitelist. "
+                    "Please wait for the 15-minute cooldown to expire or unblock your IP in MSG91 Token Settings."
+                )
+                return jsonify({"error": err_msg, "code": "IPBlocked"}), 429
+            elif "throttle" in err_msg.lower() or resp.status_code == 429:
+                err_msg = "MSG91 Throttle Limit: Too many verification attempts. Please wait 15 minutes before trying again."
+                return jsonify({"error": err_msg, "code": "Throttled"}), 429
+
             return jsonify({"error": err_msg}), 400
 
         raw_identifier = str(resp_data.get("message", "")).strip()

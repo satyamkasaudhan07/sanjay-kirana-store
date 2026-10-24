@@ -175,10 +175,10 @@ def send_sms_otp(phone: str, otp: str) -> dict:
                             "success": False,
                             "error": "SMS gateway authentication failed. Please verify MSG91_AUTHKEY in backend/.env."
                         }
-                    elif f_resp.status_code == 418 or str(f_data.get("code")) == "418":
+                    elif "ipblock" in str(f_data.get("message", "")).lower() or f_resp.status_code == 418 or str(f_data.get("code")) == "418":
                         return {
                             "success": False,
-                            "error": "MSG91 API Security restriction (Code 418): Server IP is not whitelisted. Please disable 'API Security' or whitelist server IP in MSG91 dashboard."
+                            "error": "MSG91 gateway restriction (IPBlocked / Code 418): Server IP is temporarily blocked or not whitelisted. Please wait 15 minutes before retrying or unblock in MSG91 Token Settings."
                         }
                 except requests.exceptions.RequestException as e:
                     logger.warning("MSG91 Flow API endpoint %s failed: %s", f_url, e)
@@ -228,10 +228,10 @@ def send_sms_otp(phone: str, otp: str) -> dict:
                                 "success": False,
                                 "error": "SMS gateway authentication failed. Please verify MSG91_AUTHKEY in backend/.env."
                             }
-                        if str(resp_data.get("code")) == "418" or "whitelist" in str(error_reason).lower():
+                        if "ipblock" in str(error_reason).lower() or str(resp_data.get("code")) == "418" or "whitelist" in str(error_reason).lower():
                             return {
                                 "success": False,
-                                "error": "MSG91 API Security restriction (Code 418): Server IP is not whitelisted. Please disable 'API Security' or whitelist server IP in MSG91 dashboard."
+                                "error": "MSG91 gateway restriction (IPBlocked / Code 418): Server IP is temporarily blocked or not whitelisted. Please wait 15 minutes before retrying or unblock in MSG91 Token Settings."
                             }
                         logger.error("MSG91 returned error for %s: %s", phone, error_reason)
                         return {"success": False, "error": f"Failed to send SMS OTP: {error_reason}"}

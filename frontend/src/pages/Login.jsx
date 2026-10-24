@@ -30,6 +30,11 @@ function Login({ cart = [], wishlist = [] }) {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    // MSG91 Throttling & IP Block protection
+    const [isIpBlocked, setIsIpBlocked] = useState(false);
+    const [blockedCooldown, setBlockedCooldown] = useState(0);
+    const isLaunchingRef = useRef(false);
+
     // Fallback mode for direct OTP in local testing / missing keys
     const [showFallback, setShowFallback] = useState(false);
     const [fallbackStep, setFallbackStep] = useState(1);
@@ -71,6 +76,25 @@ function Login({ cart = [], wishlist = [] }) {
 
         // Do not remove script on unmount so subsequent page visits reuse the cached SDK
     }, []);
+
+    // Countdown timer for IP Blocked cooldown
+    useEffect(() => {
+        let interval = null;
+        if (blockedCooldown > 0) {
+            interval = setInterval(() => {
+                setBlockedCooldown((prev) => {
+                    if (prev <= 1) {
+                        setIsIpBlocked(false);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [blockedCooldown]);
 
     // Countdown timer for fallback resend OTP
     useEffect(() => {
@@ -146,9 +170,19 @@ function Login({ cart = [], wishlist = [] }) {
             }
         } catch (err) {
             console.error("[MSG91 Auth Error]:", err);
-            setErrorMessage(getApiErrorMessage(err, "Server verification failed. Please try again."));
+            const apiMsg = getApiErrorMessage(err, "Server verification failed. Please try again.");
+            const isBlocked = err.response?.status === 429 || 
+                              err.response?.data?.code === "IPBlocked" || 
+                              apiMsg.toLowerCase().includes("ipblock") ||
+                              apiMsg.toLowerCase().includes("throttle");
+            if (isBlocked) {
+                setIsIpBlocked(true);
+                setBlockedCooldown(900);
+            }
+            setErrorMessage(apiMsg);
         } finally {
             setVerifyingWithBackend(false);
+            isLaunchingRef.current = false;
         }
     };
 
@@ -158,13 +192,31 @@ function Login({ cart = [], wishlist = [] }) {
     const handleWidgetFailure = (error) => {
         console.warn("[MSG91 SDK] Failure callback received:", error);
         setWidgetTriggered(false);
+        isLaunchingRef.current = false;
+
         let msg = "OTP verification failed or was cancelled.";
         if (typeof error === "string" && error.trim()) {
             msg = error;
         } else if (error && typeof error === "object") {
             msg = error.message || error.error || msg;
         }
-        setErrorMessage(msg);
+
+        const lowerMsg = String(msg).toLowerCase();
+        if (lowerMsg.includes("ipblock") || lowerMsg.includes("throttle") || lowerMsg.includes("blocked")) {
+            setIsIpBlocked(true);
+            setBlockedCooldown(900); // 15-minute standard provider cooldown
+            setErrorMessage(
+                "MSG91 Security Restriction (IPBlocked): Too many OTP requests were made in a short time. " +
+                "The provider has temporarily restricted your network IP. Please wait 15 minutes before retrying, " +
+                "or unblock your IP in MSG91 Dashboard ➔ OTP Widget ➔ Token Settings."
+            );
+        } else if (lowerMsg.includes("template") || lowerMsg.includes("missing")) {
+            setErrorMessage(
+                "MSG91 SMS Template configuration error. Please ensure your India (+91) template has ##OTP## and is approved on DLT."
+            );
+        } else {
+            setErrorMessage(msg);
+        }
     };
 
     /**
@@ -174,12 +226,31 @@ function Login({ cart = [], wishlist = [] }) {
         setErrorMessage("");
         setSuccessMessage("");
 
+        // Check if IP is currently blocked by provider
+        if (isIpBlocked && blockedCooldown > 0) {
+            const mins = Math.floor(blockedCooldown / 60);
+            const secs = blockedCooldown % 60;
+            setErrorMessage(`Network IP is temporarily restricted by MSG91. Please wait ${mins}m ${secs}s before requesting another OTP, or use Direct SMS OTP below.`);
+            return;
+        }
+
+        // Prevent duplicate concurrent launches from rapid clicking
+        if (isLaunchingRef.current || widgetTriggered || verifyingWithBackend) {
+            return;
+        }
+
         if (!MSG91_WIDGET_ID || !MSG91_TOKEN_AUTH) {
             setErrorMessage(
                 "MSG91 credentials not detected. Please configure VITE_MSG91_WIDGET_ID and VITE_MSG91_TOKEN_AUTH in your frontend .env file, or use the direct OTP fallback below."
             );
             return;
         }
+
+        isLaunchingRef.current = true;
+        // Safety release lock after 2 seconds
+        setTimeout(() => {
+            isLaunchingRef.current = false;
+        }, 2000);
 
         // Configure MSG91 Web SDK (Default UI with India +91 default)
         const configuration = {
@@ -190,9 +261,11 @@ function Login({ cart = [], wishlist = [] }) {
             countryCode: "91",
             country: "IN",
             success: (data) => {
+                isLaunchingRef.current = false;
                 handleWidgetSuccess(data);
             },
             failure: (error) => {
+                isLaunchingRef.current = false;
                 handleWidgetFailure(error);
             },
         };
@@ -206,9 +279,11 @@ function Login({ cart = [], wishlist = [] }) {
             } catch (err) {
                 console.error("[MSG91] Error invoking initSendOTP:", err);
                 setWidgetTriggered(false);
+                isLaunchingRef.current = false;
                 setErrorMessage("Could not initialize MSG91 popup. Please click Retry.");
             }
         } else {
+            isLaunchingRef.current = false;
             setErrorMessage("MSG91 service script is still loading. Please wait a moment and click again.");
         }
     };
@@ -353,17 +428,41 @@ function Login({ cart = [], wishlist = [] }) {
                                 </div>
                             </div>
 
+                            {isIpBlocked && (
+                                <div className="ip-blocked-notice" style={{
+                                    background: "#fef2f2",
+                                    border: "1px solid #fecaca",
+                                    borderRadius: "8px",
+                                    padding: "12px 14px",
+                                    marginBottom: "16px",
+                                    fontSize: "0.85rem",
+                                    color: "#991b1b"
+                                }}>
+                                    <strong>🛡️ Provider Rate Limit / IP Block Active:</strong>
+                                    <p style={{ margin: "6px 0 0 0", lineHeight: "1.4" }}>
+                                        MSG91 has temporarily restricted OTP requests from your network IP due to repeated attempts.
+                                        {blockedCooldown > 0 ? (
+                                            <> Cooldown remaining: <strong>{Math.floor(blockedCooldown / 60)}m {blockedCooldown % 60}s</strong>.</>
+                                        ) : (
+                                            <> Cooldown finished. You may retry or unblock your IP in MSG91 Token Settings.</>
+                                        )}
+                                    </p>
+                                </div>
+                            )}
+
                             <button
                                 type="button"
                                 className="login-primary-btn msg91-launch-btn"
                                 onClick={handleLaunchWidget}
-                                disabled={verifyingWithBackend || !scriptLoaded || scriptError}
+                                disabled={verifyingWithBackend || !scriptLoaded || scriptError || widgetTriggered || (isIpBlocked && blockedCooldown > 0)}
                             >
                                 {verifyingWithBackend ? (
                                     <>
                                         <span className="spinner-inline" />
                                         Validating with Server...
                                     </>
+                                ) : isIpBlocked && blockedCooldown > 0 ? (
+                                    `IP Restricted (Wait ${Math.floor(blockedCooldown / 60)}m ${blockedCooldown % 60}s)`
                                 ) : widgetTriggered ? (
                                     "Verification Popup Active..."
                                 ) : !scriptLoaded ? (
@@ -378,6 +477,19 @@ function Login({ cart = [], wishlist = [] }) {
                                     <span>⚠️ MSG91 Widget ID or Client Token is not set in <code>frontend/.env</code>.</span>
                                 </div>
                             )}
+
+                            <div className="fallback-toggle-wrapper" style={{ marginTop: "14px", textAlign: "center" }}>
+                                <button
+                                    type="button"
+                                    className="fallback-toggle-btn"
+                                    onClick={() => {
+                                        setShowFallback(true);
+                                        setErrorMessage("");
+                                    }}
+                                >
+                                    Facing issues with the popup? Use Direct SMS OTP →
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         /* Secondary / Direct OTP Fallback Form */

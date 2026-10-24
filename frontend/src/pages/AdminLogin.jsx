@@ -34,6 +34,11 @@ function AdminLogin() {
     const [verifyingWidget, setVerifyingWidget] = useState(false);
     const [widgetLaunched, setWidgetLaunched] = useState(false);
 
+    // MSG91 Throttling & IP Block protection
+    const [isIpBlocked, setIsIpBlocked] = useState(false);
+    const [blockedCooldown, setBlockedCooldown] = useState(0);
+    const isLaunchingRef = useRef(false);
+
     // Safe dynamic loading of MSG91 Web SDK script
     useEffect(() => {
         const scriptId = "msg91-otp-provider-script";
@@ -54,6 +59,25 @@ function AdminLogin() {
         };
         document.body.appendChild(script);
     }, []);
+
+    // Countdown timer for IP Blocked cooldown
+    useEffect(() => {
+        let interval = null;
+        if (blockedCooldown > 0) {
+            interval = setInterval(() => {
+                setBlockedCooldown((prev) => {
+                    if (prev <= 1) {
+                        setIsIpBlocked(false);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [blockedCooldown]);
 
     // Step 1: Credentials verification
     const handleStepA = async (e) => {
@@ -98,6 +122,17 @@ function AdminLogin() {
         setErrorMessage("");
         setSuccessMessage("");
 
+        if (isIpBlocked && blockedCooldown > 0) {
+            const mins = Math.floor(blockedCooldown / 60);
+            const secs = blockedCooldown % 60;
+            setErrorMessage(`Network IP is temporarily restricted by MSG91 (IPBlocked). Please wait ${mins}m ${secs}s before trying again.`);
+            return;
+        }
+
+        if (isLaunchingRef.current || verifyingWidget) {
+            return;
+        }
+
         if (!MSG91_WIDGET_ID || !MSG91_TOKEN_AUTH) {
             setErrorMessage("MSG91 widget configuration missing in frontend environment. Please check VITE_MSG91_WIDGET_ID.");
             return;
@@ -107,6 +142,11 @@ function AdminLogin() {
             setErrorMessage("MSG91 service is initializing. Please wait a moment and try again.");
             return;
         }
+
+        isLaunchingRef.current = true;
+        setTimeout(() => {
+            isLaunchingRef.current = false;
+        }, 2000);
 
         setWidgetLaunched(true);
 
@@ -118,6 +158,7 @@ function AdminLogin() {
             countryCode: "91",
             country: "IN",
             success: async (data) => {
+                isLaunchingRef.current = false;
                 let accessToken = null;
                 if (typeof data === "string") {
                     accessToken = data;
@@ -150,14 +191,37 @@ function AdminLogin() {
                         setErrorMessage("Failed to acquire admin token from server.");
                     }
                 } catch (err) {
-                    setErrorMessage(getApiErrorMessage(err, "Admin server verification failed. Please try again."));
+                    const apiMsg = getApiErrorMessage(err, "Admin server verification failed. Please try again.");
+                    const isBlocked = err.response?.status === 429 ||
+                                      err.response?.data?.code === "IPBlocked" ||
+                                      apiMsg.toLowerCase().includes("ipblock") ||
+                                      apiMsg.toLowerCase().includes("throttle");
+                    if (isBlocked) {
+                        setIsIpBlocked(true);
+                        setBlockedCooldown(900);
+                    }
+                    setErrorMessage(apiMsg);
                 } finally {
                     setVerifyingWidget(false);
+                    isLaunchingRef.current = false;
                 }
             },
             failure: (err) => {
+                isLaunchingRef.current = false;
+                setWidgetLaunched(false);
                 const msg = typeof err === "string" ? err : err?.message || "Widget verification cancelled or timed out.";
-                setErrorMessage(msg);
+                const lower = String(msg).toLowerCase();
+                if (lower.includes("ipblock") || lower.includes("throttle") || lower.includes("blocked")) {
+                    setIsIpBlocked(true);
+                    setBlockedCooldown(900);
+                    setErrorMessage(
+                        "MSG91 Security Restriction (IPBlocked): Too many OTP requests were made in a short time. " +
+                        "The provider has temporarily restricted your network IP. Please wait 15 minutes before retrying, " +
+                        "or unblock your IP in MSG91 Dashboard ➔ OTP Widget ➔ Token Settings."
+                    );
+                } else {
+                    setErrorMessage(msg);
+                }
             },
         };
 
@@ -166,19 +230,11 @@ function AdminLogin() {
             window.initSendOTP(window.configuration);
         } catch (err) {
             console.error("Failed to launch MSG91 widget for admin:", err);
+            isLaunchingRef.current = false;
+            setWidgetLaunched(false);
             setErrorMessage("Could not launch MSG91 popup. Please check your browser popup blocker.");
         }
     };
-
-    // Auto-launch widget on Step 2 transition if script is loaded
-    useEffect(() => {
-        if (step === 2 && scriptLoaded && !widgetLaunched && challengeId) {
-            const timer = setTimeout(() => {
-                handleLaunchWidgetForAdmin();
-            }, 400);
-            return () => clearTimeout(timer);
-        }
-    }, [step, scriptLoaded, challengeId]);
 
     return (
         <main className="admin-login-page">
@@ -263,16 +319,40 @@ function AdminLogin() {
                             </p>
                         </div>
 
+                        {isIpBlocked && (
+                            <div className="ip-blocked-notice" style={{
+                                background: "#fef2f2",
+                                border: "1px solid #fecaca",
+                                borderRadius: "8px",
+                                padding: "12px 14px",
+                                margin: "12px 0",
+                                fontSize: "0.85rem",
+                                color: "#991b1b"
+                            }}>
+                                <strong>🛡️ Provider Rate Limit / IP Block Active:</strong>
+                                <p style={{ margin: "6px 0 0 0", lineHeight: "1.4" }}>
+                                    MSG91 has temporarily restricted OTP requests due to repeated attempts.
+                                    {blockedCooldown > 0 ? (
+                                        <> Cooldown remaining: <strong>{Math.floor(blockedCooldown / 60)}m {blockedCooldown % 60}s</strong>.</>
+                                    ) : (
+                                        <> Cooldown expired. You may now retry or unblock your IP in MSG91 Token Settings.</>
+                                    )}
+                                </p>
+                            </div>
+                        )}
+
                         <div className="admin-otp-actions" style={{ flexDirection: "column", gap: "12px", width: "100%", margin: "16px 0" }}>
                             <button
                                 type="button"
                                 className="admin-login-btn verified"
                                 onClick={handleLaunchWidgetForAdmin}
-                                disabled={verifyingWidget || loading}
+                                disabled={verifyingWidget || loading || (isIpBlocked && blockedCooldown > 0)}
                                 style={{ width: "100%", padding: "14px", fontSize: "1rem" }}
                             >
                                 {verifyingWidget
                                     ? "Authorizing Session..."
+                                    : isIpBlocked && blockedCooldown > 0
+                                    ? `IP Restricted (Wait ${Math.floor(blockedCooldown / 60)}m ${blockedCooldown % 60}s)`
                                     : "⚡ Open MSG91 OTP Verification Popup"}
                             </button>
 
